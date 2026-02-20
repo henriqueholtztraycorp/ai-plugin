@@ -1,0 +1,19 @@
+{
+  "name": "wake-storefront-ai",
+  "owner": {
+    "name": "Wake Commerce",
+    "email": ""
+  },
+  "metadata": {
+    "description": "AI agents and skills to support agencies in storefront layout implementation, review, performance optimization, and SEO validation.",
+    "version": "0.1.0",
+    "pluginRoot": "plugins"
+  },
+  "plugins": [
+    {
+      "name": "wake-storefront",
+      "source": "./plugins/wake-storefront",
+      "description": "AI agents and skills to support agencies in storefront layout implementation, review, performance optimization, and SEO validation."
+    }
+  ]
+}
