@@ -16,6 +16,12 @@ AI-powered development assistance for Wake Commerce Storefront API. Agents, skil
 2. Install: `/plugin install wake-storefront-api`
 3. Or test locally: `claude --plugin-dir ./path/to/plugin`
 
+## Documentation
+
+For detailed API reference, schemas, and guides:
+
+- **[Wake Commerce Documentation](https://wakecommerce.readme.io/)** — Storefront API, GraphQL schema, checkout, products, search, and more.
+
 ---
 
 ## Agents
@@ -106,7 +112,7 @@ Sync marketplace-ready artifacts to a separate publish repository:
 
 ## References
 
-- [Wake Commerce Storefront API](https://wakecommerce.readme.io)
+- [Wake Commerce Documentation](https://wakecommerce.readme.io/) — API reference, schemas, guides
 - [Agent Skills Specification](https://agentskills.io/specification)
 - [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp)
 - [Core Web Vitals](https://web.dev/articles/vitals)
