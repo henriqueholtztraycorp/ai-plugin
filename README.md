@@ -7,7 +7,7 @@ AI-powered development assistance for Wake Commerce Storefront API. Agents, skil
 ### Cursor
 
 1. Open Cursor Settings → Plugins
-2. Add this directory (or the publish repo) as a local plugin
+2. Add this directory as a local plugin
 3. The plugin loads manifests, skills, agents, and commands
 
 ### Claude (Agent Plugins)
@@ -52,7 +52,6 @@ For detailed API reference, schemas, and guides:
 | **wake-performance-review** | Performance review. Query optimization, caching, Core Web Vitals. Uses performance-engineer agent and web-performance-audit skill. |
 | **wake-query-review** | GraphQL query design review. Schema alignment, fragments, batching. Uses graphql-architect agent. |
 | **wake-code-review** | Code quality review. Style, patterns, maintainability. Uses code-reviewer agent. |
-| **publish-copy** | Copy spec-derived plugin artifacts to the publish repository. Destination from .env.local (PUBLISH_REPO_PATH) or .publish-config.json. |
 
 ---
 
@@ -89,24 +88,9 @@ For detailed API reference, schemas, and guides:
 | Skills | `skills/` | Domain instructions and references |
 | Agents | `agents/` | Persona definitions |
 | Commands | `commands/` | Slash-command workflows |
-| Rules | `rules/` | Publish-copy inclusion/exclusion |
+| Rules | `rules/` | Plugin rules |
 | Scripts | `scripts/` | Validation and extraction tools |
 | Assets | `assets/` | Logo and marketplace assets |
-
----
-
-## Publish-Copy (Toolkit → Publish Repo)
-
-Sync marketplace-ready artifacts to a separate publish repository:
-
-1. **Configure destination**:
-   - `.env.local`: `PUBLISH_REPO_PATH=/path/to/publish-repo`
-   - Or `.publish-config.json`: `{ "destination": "/path/to/publish-repo" }`
-   - Config overrides env if both set
-
-2. **Run**: Invoke `/publish-copy`
-
-3. **Verify**: Destination contains only `.cursor-plugin/`, `.claude-plugin/`, `.mcp.json`, `skills/`, `agents/`, `rules/`, `commands/`, `README.md`, `assets/`, `scripts/`. Internal tooling (`.specify/`, `specs/`, etc.) is excluded.
 
 ---
 
