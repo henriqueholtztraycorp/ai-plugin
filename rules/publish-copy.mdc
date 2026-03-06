@@ -1,0 +1,43 @@
+---
+description: Publish-copy rule. Defines inclusion (spec-derived paths to copy) and exclusion (internal tooling to never copy). The /publish-copy command MUST read this rule and copy only inclusion paths.
+alwaysApply: false
+---
+
+# Publish-Copy Rule
+
+When copying plugin artifacts to the publish repository, follow this rule.
+
+## Inclusion (COPY ONLY these paths)
+
+Copy these paths from toolkit repo root to publish destination. Overwrite existing files.
+
+| Path | Description |
+|------|-------------|
+| `.cursor-plugin/` | Cursor manifest and plugin metadata |
+| `.claude-plugin/` | Claude/Agent Plugins manifest |
+| `.mcp.json` | MCP server definitions (Chrome DevTools) |
+| `skills/` | Skills (wake-storefront-api, wake-checkout-flow, wake-product-variants, wake-storefront-reference-patterns, wake-hotsite-banners, web-performance-audit, and spec-derived only) |
+| `agents/` | Agents (wake-storefront-developer, wake-checkout-architect, wake-migration-specialist, security-auditor, qa-expert, performance-engineer, graphql-architect, code-reviewer, and spec-derived only) |
+| `rules/` | Rules (publish-copy.mdc and spec-derived only) |
+| `commands/` | Commands (publish-copy, wake-product-page, wake-search-page, wake-checkout-flow, wake-migrate-storefront-query, wake-security-audit, wake-test-plan, wake-performance-review, wake-query-review, wake-code-review, and spec-derived only) |
+| `README.md` | Plugin README |
+| `assets/` | Logo and other marketplace assets |
+| `scripts/` | Plugin utility scripts (wake-graphql-validate, wake-query-from-reference, wake-checkout-flow-validator) |
+
+## Exclusion (NEVER copy)
+
+Do NOT copy any of the following:
+
+- `.bmad-core/` — Internal BMad tooling
+- `.codex/` — Internal Codex tooling
+- `.specify/` — Speckit workflow and memory
+- `specs/` — Feature specs (toolkit-only)
+- `.publish-config.json` — Local config (may contain absolute paths)
+- Any agents, skills, tools, or workflows NOT created via specs
+- `node_modules/`, `dist/`, `build/`, `.git/`, `*.log`, `.env*`
+
+## Behavior
+
+- **Overwrite**: Replace existing files at destination with toolkit copies
+- **Create destination**: If destination path does not exist, create it
+- **Report empty**: If no spec-derived artifacts exist to copy, report and exit
