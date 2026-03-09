@@ -5,6 +5,8 @@ description: "Wake Commerce Storefront API for headless storefronts. Use when bu
 
 # Wake Storefront API
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 GraphQL-based Storefront API for Wake Commerce headless storefronts. Covers products, search, checkout, cart, and customer operations.
 
 ## When to Use

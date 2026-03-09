@@ -5,6 +5,8 @@ description: Copy only spec-derived plugin artifacts to the publish repository. 
 
 # Publish-Copy Command
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema (for any Wake API references in copied content).
+
 Copy marketplace-ready plugin artifacts from the toolkit repo to the publish repository. Only spec-derived paths are copied; internal tooling is excluded.
 
 ## Prerequisites
@@ -31,7 +33,7 @@ Copy marketplace-ready plugin artifacts from the toolkit repo to the publish rep
    - `agents/`
    - `rules/`
    - `commands/`
-   - `README.md`
+   - `README-publish.md` (copied as `README.md` — marketplace version without toolkit-only Publish-Copy section)
    - `assets/`
    - `scripts/`
 5. **Overwrite** existing files at destination.
@@ -51,14 +53,14 @@ mkdir -p "$DEST"
 for dir in .cursor-plugin .claude-plugin skills agents rules commands assets scripts; do
   [ -d "$dir" ] && cp -R "$dir" "$DEST/"
 done
-[ -f README.md ] && cp README.md "$DEST/"
+[ -f README-publish.md ] && cp README-publish.md "$DEST/README.md"
 echo "Publish-copy complete. Destination: $DEST"
 ```
 
 ## Validation
 
 After copy, verify destination contains only:
-- `.cursor-plugin/`, `.claude-plugin/`, `.mcp.json`, `skills/`, `agents/`, `rules/`, `commands/`, `README.md`, `assets/`, `scripts/`
+- `.cursor-plugin/`, `.claude-plugin/`, `.mcp.json`, `skills/`, `agents/`, `rules/`, `commands/`, `README.md` (from README-publish.md), `assets/`, `scripts/`
 
 And does NOT contain:
 - `.bmad-core/`, `.codex/`, `.specify/`, `specs/`

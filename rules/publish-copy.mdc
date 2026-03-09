@@ -20,7 +20,7 @@ Copy these paths from toolkit repo root to publish destination. Overwrite existi
 | `agents/` | Agents (wake-storefront-developer, wake-checkout-architect, wake-migration-specialist, security-auditor, qa-expert, performance-engineer, graphql-architect, code-reviewer, and spec-derived only) |
 | `rules/` | Rules (publish-copy.mdc and spec-derived only) |
 | `commands/` | Commands (publish-copy, wake-product-page, wake-search-page, wake-checkout-flow, wake-migrate-storefront-query, wake-security-audit, wake-test-plan, wake-performance-review, wake-query-review, wake-code-review, and spec-derived only) |
-| `README.md` | Plugin README |
+| `README-publish.md` | Plugin README (copied as `README.md`; toolkit-only content excluded) |
 | `assets/` | Logo and other marketplace assets |
 | `scripts/` | Plugin utility scripts (wake-graphql-validate, wake-query-from-reference, wake-checkout-flow-validator) |
 

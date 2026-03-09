@@ -5,6 +5,8 @@ description: "Wake Commerce variant resolution and add-to-cart. Use when buildin
 
 # Wake Product Variants
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Variant resolution, attribute matrix, customizations, and subscriptions for Wake Commerce product detail pages and add-to-cart flows.
 
 ## When to Use

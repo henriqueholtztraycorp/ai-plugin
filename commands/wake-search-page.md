@@ -5,6 +5,8 @@ description: Build a Wake Commerce search page. Call search(query, partnerAccess
 
 # Wake Search Page Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Build a search page for Wake Commerce headless storefront.
 
 ## Steps

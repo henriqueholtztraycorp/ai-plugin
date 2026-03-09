@@ -5,6 +5,8 @@ description: Security audit for Wake Commerce storefront. Review token handling,
 
 # Wake Security Audit Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema (for Wake API references).
+
 Audit storefront code for security issues.
 
 ## Steps

@@ -1,5 +1,7 @@
 # Customer API Patterns
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 ## Authentication
 
 Customer operations require `customerAccessToken`. Obtain via login flow; store securely and pass in subsequent requests.

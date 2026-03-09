@@ -1,5 +1,7 @@
 # Pickup Store (Retirada na Loja)
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 When the selected shipping is pickup ("Retirada"), `checkoutSelectShippingQuote` may require `additionalInformation`.
 
 ## InStorePickupAdditionalInformationInput

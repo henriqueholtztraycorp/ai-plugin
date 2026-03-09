@@ -1,5 +1,7 @@
 # Shipping: shippingQuotes and checkoutSelectShippingQuote
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 ## shippingQuotes Query
 
 ```graphql
