@@ -5,6 +5,8 @@ description: Generate test plan for Wake Commerce storefront. Define E2E scenari
 
 # Wake Test Plan Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema (for Wake API references).
+
 Generate test scenarios and acceptance criteria for storefront features.
 
 ## Steps

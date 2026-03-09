@@ -1,5 +1,7 @@
 # Customizations and Subscriptions
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 ## customizations
 
 Products may have customizations (e.g. engraving, gift message):

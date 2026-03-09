@@ -1,5 +1,7 @@
 # Delivery Schedule (Agendamento de Entrega)
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 When the shipping option supports delivery scheduling, the `selectedShipping` response includes `deliverySchedule`.
 
 ## deliverySchedule in Response

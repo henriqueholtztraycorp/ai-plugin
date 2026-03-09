@@ -5,6 +5,8 @@ description: GraphQL query design review for Wake Commerce. Schema alignment, fr
 
 # Wake Query Review Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Review GraphQL query and mutation design.
 
 ## Steps

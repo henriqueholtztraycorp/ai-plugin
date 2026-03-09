@@ -5,6 +5,8 @@ description: Implement full Wake Commerce checkout sequence. createCheckout → 
 
 # Wake Checkout Flow Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Implement the full checkout mutation sequence for Wake Commerce.
 
 ## Steps

@@ -6,6 +6,8 @@ compatibility: "chrome-devtools MCP"
 
 # Web Performance Audit
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema (for Wake API references in scope).
+
 Run Lighthouse audits and performance traces on web pages using Chrome DevTools MCP. Covers accessibility, SEO, best practices, and Core Web Vitals (LCP, INP, CLS).
 
 ## When to Use

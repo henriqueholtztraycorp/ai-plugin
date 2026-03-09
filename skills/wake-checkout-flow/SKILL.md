@@ -5,6 +5,8 @@ description: "Wake Commerce checkout mutation sequence. Use when implementing or
 
 # Wake Checkout Flow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Full checkout mutation sequence for Wake Commerce headless storefronts. Covers createCheckout through checkoutComplete per [processo-de-fechamento-de-pedido](https://wakecommerce.readme.io/docs/processo-de-fechamento-de-pedido).
 
 ## When to Use

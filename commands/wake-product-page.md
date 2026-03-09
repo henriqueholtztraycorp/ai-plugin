@@ -5,6 +5,8 @@ description: Build a Wake Commerce product detail page. Load product by productI
 
 # Wake Product Page Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Build a product detail page for Wake Commerce headless storefront.
 
 ## Steps

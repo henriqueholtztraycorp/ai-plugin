@@ -1,5 +1,7 @@
 # Checkout and Cart Patterns
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 ## Checkout Query
 
 ```graphql

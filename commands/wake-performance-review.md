@@ -5,6 +5,8 @@ description: Performance review for Wake Commerce storefront. Query optimization
 
 # Wake Performance Review Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema (for Wake API references).
+
 Review and optimize storefront performance.
 
 ## Steps

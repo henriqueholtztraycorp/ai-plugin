@@ -5,6 +5,8 @@ description: "Wake Storefront reference to headless mapping. Use when migrating 
 
 # Wake Storefront Reference Patterns
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Mapping Wake Storefront reference implementations (Queries/, Snippets) to headless Storefront API patterns. Use when migrating from templates or aligning with production query patterns.
 
 ## When to Use

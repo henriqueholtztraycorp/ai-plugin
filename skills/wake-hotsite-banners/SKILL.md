@@ -5,60 +5,100 @@ description: "Wake Commerce hotsite and landing pages. Use when building landing
 
 # Wake Hotsite Banners
 
-Hotsite (landing page) query for Wake Commerce. Covers banners, contents, products, and SEO for promotional and campaign pages.
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
 
-## When to Use
+Hotsite (landing page) guidance for Wake Commerce storefront integrations. This skill covers banners, contents, products, and SEO for promotional and campaign pages.
 
-- Building landing pages
-- Promotional or campaign URLs
-- Banner/carousel content
-- Page content blocks with products
+## When to use
 
-## hotsite Query
+- Building landing pages from hotsite URL routes
+- Implementing promotional or campaign pages
+- Rendering banner/carousel sections from API data
+- Mapping content blocks and related products
+- Applying SEO metadata from hotsite payload
+
+## Workflow steps
+
+1. Resolve the incoming route to a hotsite `url` value.
+2. Call `hotsite(url, partnerAccessToken)` with the appropriate context.
+3. Map response data to page sections: `banners`, `contents`, `productsByOffset`, `seo`.
+4. Apply SEO fields to the document head.
+5. Validate fallback behavior when URL is invalid or API is unavailable.
+
+## hotsite(url, partnerAccessToken)
+
+Use the hotsite root query to fetch landing page data.
+
+- **url**: Landing page path (example: `/promo/black-friday`).
+- **partnerAccessToken**: Optional in standard storefront contexts; required in partner/wholesale scenarios.
+- **Security note**: Never hardcode `partnerAccessToken`. Source it from secure server-side configuration or environment-managed flows.
 
 ```graphql
 query Hotsite($url: String!, $partnerAccessToken: String) {
   hotsite(url: $url, partnerAccessToken: $partnerAccessToken) {
     url
-    banners { ... }
-    contents { ... }
+    banners {
+      id
+      name
+      images {
+        url
+      }
+      links {
+        url
+      }
+    }
+    contents {
+      id
+      title
+      type
+    }
     productsByOffset(limit: 20, offset: 0) {
       productId
       productName
       alias
-      images { url }
-      prices { listPrice price }
+      images {
+        url
+      }
+      prices {
+        listPrice
+        price
+      }
     }
-    seo { content name type httpEquiv scheme }
+    seo {
+      content
+      name
+      type
+      httpEquiv
+      scheme
+    }
   }
 }
 ```
 
-- **url**: Landing page URL path (e.g. `/promo/black-friday`).
-- **partnerAccessToken**: Optional; use for partner/wholesale context.
-
-## Key Fields
+## Fields to map
 
 | Field | Purpose |
 |-------|---------|
-| banners | Banner/carousel content (images, links, order) |
-| contents | Page content blocks |
-| productsByOffset | Products for the page (limit, offset for pagination) |
-| seo | Meta tags, title, description for head |
+| `banners` | Banner/carousel rendering content |
+| `contents` | Page sections and content blocks |
+| `productsByOffset` | Product listing area for the landing page |
+| `seo` | Meta tags and head metadata |
 
-## Usage
+## Edge cases (short bullet list)
 
-1. Resolve URL from route (e.g. `/promo/:slug` → `url: /promo/black-friday`).
-2. Call hotsite(url, partnerAccessToken).
-3. Render banners, contents, products per design.
-4. Use seo for document head (title, meta description, etc.).
+- **Invalid URL**: Return graceful fallback (empty-state page or not-found state) without crashing the flow.
+- **API unavailable**: Surface retry-friendly error handling and avoid exposing internal diagnostics.
+- **Missing token in partner context**: Prompt secure token configuration guidance; do not suggest hardcoded token values.
 
-## Error Handling
+## Pre-publish checklist
 
-- **Empty hotsite**: URL may not exist; check for null/empty response.
-- **Missing partnerAccessToken**: Omit when not in partner context; required only for wholesale.
+- [ ] No reference to `api.fbits.net` or any `*.fbits.net` in this document, generated guidance, or linked materials.
+- [ ] Canonical schema/docs source is https://wakecommerce.readme.io/docs/schema.
+- [ ] Frontmatter includes `name` and `description`, and `name` matches directory (`wake-hotsite-banners`).
+- [ ] Document includes `When to use`, numbered `Workflow steps`, and `References` sections.
+- [ ] Document is under 500 lines.
 
 ## References
 
-- Wake Commerce: wakecommerce.readme.io
-- home.graphql in reference: often composes hotsite with search, brands
+- Wake Commerce schema and API docs: https://wakecommerce.readme.io/docs/schema
+- Wake Commerce hotsite and storefront docs: https://wakecommerce.readme.io/docs

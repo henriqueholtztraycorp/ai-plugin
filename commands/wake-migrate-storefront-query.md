@@ -5,6 +5,8 @@ description: Port Wake Storefront reference Queries/*.graphql to headless. Extra
 
 # Wake Migrate Storefront Query Workflow
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Port reference GraphQL to headless Storefront API.
 
 ## Steps

@@ -1,5 +1,7 @@
 # Storefront Queries Index
 
+**Forbidden:** api.fbits.net (and any *.fbits.net). **Canonical source:** https://wakecommerce.readme.io/docs/schema
+
 Mapping of Wake Storefront reference Queries/*.graphql to use cases and headless equivalents.
 
 ## Queries
