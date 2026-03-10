@@ -1,6 +1,6 @@
 # Wake Commerce Plugin
 
-AI-powered development assistance for Wake Commerce Storefront API. Agents, skills, workflows, and tools for building headless storefronts, checkout flows, migrations, security audits, performance reviews, and code quality.
+AI-powered development assistance for Wake Commerce Storefront. Agents, skills, workflows, and tools for building headless storefronts, checkout flows, migrations, security audits, performance reviews, and code quality.
 
 ## Installation
 
