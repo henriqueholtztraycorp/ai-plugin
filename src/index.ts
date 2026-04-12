@@ -4,6 +4,11 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import { initCommand } from './commands/init.js';
 import { configCommand } from './commands/config.js';
+import { authCommand } from './commands/auth.js';
+import { linkCommand } from './commands/link.js';
+import { productsCommand } from './commands/products.js';
+import { ordersCommand } from './commands/orders.js';
+import { customersCommand } from './commands/customers.js';
 
 const program = new Command();
 
@@ -14,6 +19,11 @@ program
 
 program.addCommand(initCommand);
 program.addCommand(configCommand);
+program.addCommand(authCommand);
+program.addCommand(linkCommand);
+program.addCommand(productsCommand);
+program.addCommand(ordersCommand);
+program.addCommand(customersCommand);
 
 program
   .command('status')

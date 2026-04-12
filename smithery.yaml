@@ -1,0 +1,25 @@
+name: Wake Commerce
+description: Connect Claude to Wake Commerce — browse products, orders, and customers
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      apiKey:
+        type: string
+        description: Your Wake Commerce API key
+      storeId:
+        type: string
+        description: Your Wake Commerce store identifier
+    required:
+      - apiKey
+      - storeId
+  commandFunction: |-
+    (config) => ({
+      command: "npx",
+      args: ["-y", "wake-commerce-mcp"],
+      env: {
+        WAKE_API_KEY: config.apiKey,
+        WAKE_STORE_ID: config.storeId
+      }
+    })
