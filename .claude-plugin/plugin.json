@@ -1,6 +1,6 @@
 {
-  "name": "wake-storefront-api",
-  "description": "Wake Commerce Storefront API development assistance for headless storefronts. Teaches product queries, checkout flow, cart, customer API, and GraphQL patterns.",
+  "name": "wake-storefront",
+  "description": "Wake Commerce development assistance for headless storefronts. Teaches product queries, checkout flow, cart, customer API, and GraphQL patterns.",
   "version": "1.0.0",
   "author": {
     "name": "Wake Commerce"
