@@ -68,41 +68,6 @@ For detailed API reference, schemas, and guides:
 
 ---
 
-## MCP Server
-
-Connect Claude Desktop or Claude Code directly to your Wake Commerce store via the MCP server.
-
-**Smithery (one-click install):** [smithery.ai/servers/diego-zjqo/wake-commerce](https://smithery.ai/servers/diego-zjqo/wake-commerce)
-
-**Manual (Claude Desktop):**
-
-```json
-{
-  "mcpServers": {
-    "wake-commerce": {
-      "command": "npx",
-      "args": ["-y", "wake-commerce-mcp"],
-      "env": {
-        "WAKE_API_KEY": "your-api-key",
-        "WAKE_STORE_ID": "your-store-id"
-      }
-    }
-  }
-}
-```
-
-Available tools: `list_products`, `list_orders`, `get_order`, `list_customers`, `get_customer`.
-
-### Credential storage
-
-The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 600 on POSIX). On Windows NTFS, POSIX file modes are largely ignored — anything running as the same user can read the file. If that is a concern, prefer environment variables sourced from a secret manager (Windows Credential Manager, 1Password CLI, Vault, etc.) instead of persisting the token to disk.
-
-Set `WAKE_LEGACY_AUTH=1` only if your tenant requires the legacy `TCS-Access-Token` header in addition to `Authorization: Bearer`. Off by default to limit token surface in logs and proxies.
-
-Override `WAKE_API_BASE_URL` if your tenant is on a non-default Wake REST host (defaults to `https://api.fbits.net`).
-
----
-
 ## Tools (Scripts)
 
 | Script | Usage | Purpose |
@@ -119,7 +84,7 @@ Override `WAKE_API_BASE_URL` if your tenant is on a non-default Wake REST host (
 |-----------|------|---------|
 | Cursor manifest | `.cursor-plugin/` | Cursor plugin metadata |
 | Claude manifest | `.claude-plugin/` | Claude/Agent Plugins metadata |
-| MCP config | `.mcp.json` | MCP servers config |
+| MCP config | `.mcp.json` | External MCP servers used by skills/agents |
 | Skills | `skills/` | Domain instructions and references |
 | Agents | `agents/` | Persona definitions |
 | Commands | `commands/` | Slash-command workflows |

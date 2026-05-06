@@ -1,13 +1,5 @@
 {
   "mcpServers": {
-    "wake-commerce": {
-      "command": "npx",
-      "args": ["tsx", "src/mcp-server.ts"],
-      "env": {
-        "WAKE_API_KEY": "${WAKE_API_KEY}",
-        "WAKE_STORE_ID": "${WAKE_STORE_ID}"
-      }
-    },
     "shadcn": {
       "command": "npx",
       "args": ["shadcn@latest", "mcp"]
