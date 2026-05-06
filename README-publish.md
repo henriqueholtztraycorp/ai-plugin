@@ -99,6 +99,8 @@ The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 
 
 Set `WAKE_LEGACY_AUTH=1` only if your tenant requires the legacy `TCS-Access-Token` header in addition to `Authorization: Bearer`. Off by default to limit token surface in logs and proxies.
 
+Override `WAKE_API_BASE_URL` if your tenant is on a non-default Wake REST host (defaults to `https://api.fbits.net`).
+
 ---
 
 ## Tools (Scripts)

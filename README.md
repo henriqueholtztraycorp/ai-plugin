@@ -14,7 +14,7 @@ AI-powered development assistance for Wake Commerce Storefront. Agents, skills, 
 
 1. Add the marketplace if needed: `/plugin marketplace add <marketplace-url>`
 2. Install: `/plugin install wake-storefront-api`
-3. Or test locally: `claude --plugin-dir ./path/to/plugin`
+3. Or test locally with a local marketplace: `/plugin marketplace add ./` from the plugin root
 
 ## Documentation
 
@@ -99,6 +99,7 @@ The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 
 
 - Prefer environment variables (`$env:WAKE_API_KEY`, `$env:WAKE_STORE_ID`) sourced from a secret manager (Windows Credential Manager, 1Password CLI, Vault, etc.).
 - Set `WAKE_LEGACY_AUTH=1` only if your tenant requires the legacy `TCS-Access-Token` header in addition to `Authorization: Bearer`. Off by default to limit token surface in logs and proxies.
+- Override `WAKE_API_BASE_URL` if your tenant is on a non-default Wake REST host (defaults to `https://api.fbits.net`).
 
 ---
 

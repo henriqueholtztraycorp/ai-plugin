@@ -9,6 +9,16 @@ const idSchema = z
   .max(64)
   .regex(/^[A-Za-z0-9_-]+$/, 'ID must contain only letters, numbers, underscores, or hyphens');
 
+// Bound result-set size so a misbehaving client cannot ask for an unbounded slice
+// and OOM the server. Wake REST endpoints typically page in the low hundreds.
+const limitSchema = z
+  .number()
+  .int()
+  .min(1)
+  .max(500)
+  .optional()
+  .describe('Max number of results (1–500)');
+
 export function registerTools(server: McpServer, getClient: () => Promise<ApiClient>) {
   // ── Products ────────────────────────────────────────────────────────────────
 
@@ -16,7 +26,7 @@ export function registerTools(server: McpServer, getClient: () => Promise<ApiCli
     'list_products',
     'List Wake Commerce products with optional sorting and category enrichment',
     {
-      limit: z.number().optional().describe('Max number of products to return'),
+      limit: limitSchema,
       sortBy: z.enum(['price', 'name']).optional().default('price').describe('Field to sort by'),
       order: z.enum(['asc', 'desc']).optional().default('desc').describe('Sort direction'),
       includeCategories: z.boolean().optional().default(false).describe('Fetch and include category names'),
@@ -74,7 +84,7 @@ export function registerTools(server: McpServer, getClient: () => Promise<ApiCli
     'list_orders',
     'List Wake Commerce orders',
     {
-      limit: z.number().optional().describe('Max number of orders to return'),
+      limit: limitSchema,
     },
     async ({ limit }) => {
       const client = await getClient();
@@ -110,7 +120,7 @@ export function registerTools(server: McpServer, getClient: () => Promise<ApiCli
     'list_customers',
     'List Wake Commerce customers',
     {
-      limit: z.number().optional().describe('Max number of customers to return'),
+      limit: limitSchema,
       sortBy: z.enum(['name', 'date']).optional().default('name').describe('Field to sort by'),
       order: z.enum(['asc', 'desc']).optional().default('asc').describe('Sort direction'),
     },

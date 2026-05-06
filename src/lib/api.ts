@@ -1,5 +1,8 @@
 import { getEffectiveToken, getStoreIdentifier } from './config.js';
 
+// `api.fbits.net` is Wake's public REST endpoint. It's pinned here as the
+// default for out-of-the-box use; tenants on a different host (staging,
+// regional, or vendor-rebranded) can override via `WAKE_API_BASE_URL`.
 const DEFAULT_BASE_URL = 'https://api.fbits.net';
 
 export class ApiAuthError extends Error {
@@ -19,9 +22,10 @@ export class ApiAuthError extends Error {
  * callers should catch and exit 2 with message suggesting `wc auth` or checking key.
  */
 export async function createApiClient(
-  baseUrl = DEFAULT_BASE_URL,
+  baseUrl?: string,
   overrides?: { token?: string; store?: string }
 ) {
+  const resolvedBase = baseUrl ?? process.env.WAKE_API_BASE_URL ?? DEFAULT_BASE_URL;
   const token = overrides?.token ?? await getEffectiveToken();
   const store = overrides?.store ?? await getStoreIdentifier();
   const authHeader = process.env.WAKE_AUTH_HEADER;
@@ -36,7 +40,7 @@ export async function createApiClient(
       if (path.split(/[/\\]/).some((seg) => seg === '..')) {
         throw new Error('Path traversal segments are not allowed in api client path');
       }
-      const url = `${baseUrl.replace(/\/$/, '')}${path.startsWith('/') ? '' : '/'}${path}`;
+      const url = `${resolvedBase.replace(/\/$/, '')}${path.startsWith('/') ? '' : '/'}${path}`;
       const headers = new Headers(init?.headers);
       headers.set('accept', 'application/json');
       if (token) {
@@ -63,7 +67,12 @@ export async function createApiClient(
       }
       const res = await fetch(url, { ...init, headers });
       if (res.status === 401) {
-        const body = process.env.WC_DEBUG ? await res.text() : undefined;
+        // Only surface the response body when an explicit, dev-only flag is set.
+        // The body is redacted and truncated so accidental log paste-ins don't
+        // leak tokens or upstream session details. WC_DEBUG is kept as a legacy
+        // alias for compatibility but should be replaced by WAKE_DEBUG_API_RESPONSE.
+        const debugFlag = process.env.WAKE_DEBUG_API_RESPONSE === '1' || process.env.WC_DEBUG === '1';
+        const body = debugFlag ? redactSensitive(await res.text()).slice(0, 512) : undefined;
         throw new ApiAuthError(
           'Authentication failed. Run `wc auth login` or check your API key.',
           401,
@@ -76,3 +85,13 @@ export async function createApiClient(
 }
 
 export { getEffectiveToken } from './config.js';
+
+// Redact obvious secret-looking values from a debug payload before it lands in
+// an error message. Best-effort — the goal is to keep accidental log shares
+// from exposing bearer tokens or JWT-shaped values, not to be exhaustive.
+function redactSensitive(text: string): string {
+  return text
+    .replace(/(eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]+)/g, '[REDACTED_JWT]')
+    .replace(/(Bearer\s+)[A-Za-z0-9._\-=]+/gi, '$1[REDACTED]')
+    .replace(/(("?)(?:token|api[_-]?key|access[_-]?token|secret|password)\2\s*[:=]\s*"?)([^"\s,}]+)/gi, '$1[REDACTED]');
+}

@@ -31,4 +31,10 @@ if grep -qE 'product\(|search\(|hotsite\(' "$FILE" && ! grep -q 'partnerAccessTo
 fi
 
 echo "Validation complete. Issues: $ISSUES"
-exit $ISSUES
+# Conventional exit codes: 0 == clean, 1 == one or more issues. Don't return the
+# raw count — shell exit codes are clamped to 0–255 and collide with standard
+# error codes (1, 2) once the count grows.
+if [ "$ISSUES" -gt 0 ]; then
+  exit 1
+fi
+exit 0
