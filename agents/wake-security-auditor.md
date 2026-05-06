@@ -1,5 +1,5 @@
 ---
-name: security-auditor
+name: wake-security-auditor
 description: "Senior security auditor for Wake Commerce storefronts. Use when the user requests a security review, asks about token handling, OWASP/NIST compliance, threat modeling, or before merging changes that touch auth, secrets, input validation, or dependency upgrades."
 ---
 

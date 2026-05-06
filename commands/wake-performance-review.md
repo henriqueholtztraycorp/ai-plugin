@@ -1,6 +1,6 @@
 ---
 name: wake-performance-review
-description: Performance review for Wake Commerce storefront. Covers GraphQL query shape, caching, images, and Core Web Vitals. Delegates Lighthouse capture to the web-performance-audit skill and detailed analysis to the performance-engineer agent.
+description: Performance review for Wake Commerce storefront. Covers GraphQL query shape, caching, images, and Core Web Vitals. Delegates Lighthouse capture to the web-performance-audit skill and detailed analysis to the wake-performance-engineer agent.
 ---
 
 # Wake Performance Review Workflow
@@ -28,7 +28,7 @@ Diagnose and prioritize performance issues on a Wake Commerce storefront: GraphQ
    - **CLS:** verify reserved space for images, ads, and async-loaded modules.
 6. **JS payload.** Bundle analyzer pass: flag duplicate libraries, polyfills shipped to modern browsers, and route-level chunks > 200 KB gzipped.
 7. **Server / edge.** TTFB > 600 ms? Check origin distance, SSR work, and uncached GraphQL fan-out.
-8. **Delegate analysis.** Hand the captured traces and findings to the **performance-engineer** agent for prioritized remediation, performance budget recommendations, and an optimization roadmap.
+8. **Delegate analysis.** Hand the captured traces and findings to the **wake-performance-engineer** agent for prioritized remediation, performance budget recommendations, and an optimization roadmap.
 
 ## Output
 

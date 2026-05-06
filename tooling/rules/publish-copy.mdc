@@ -17,7 +17,7 @@ Copy these paths from toolkit repo root to publish destination. Overwrite existi
 | `.claude-plugin/` | Claude/Agent Plugins manifest |
 | `.mcp.json` | MCP server definitions (Chrome DevTools only) |
 | `skills/` | Skills (wake-storefront-api, wake-checkout-flow, wake-product-variants, wake-storefront-reference-patterns, wake-hotsite-banners, web-performance-audit, and spec-derived only) |
-| `agents/` | Agents (wake-storefront-developer, wake-checkout-architect, wake-migration-specialist, security-auditor, qa-expert, performance-engineer, graphql-architect, code-reviewer, and spec-derived only) |
+| `agents/` | Agents (wake-storefront-developer, wake-checkout-architect, wake-migration-specialist, wake-security-auditor, wake-qa-expert, wake-performance-engineer, wake-graphql-architect, wake-code-reviewer, and spec-derived only) |
 | `commands/` | Commands (wake-product-page, wake-search-page, wake-checkout-flow, wake-migrate-storefront-query, wake-security-audit, wake-test-plan, wake-performance-review, wake-query-review, wake-code-review, and spec-derived only) |
 | `README-publish.md` | Plugin README (copied as `README.md`; toolkit-only content excluded) |
 | `assets/` | Logo and other marketplace assets |

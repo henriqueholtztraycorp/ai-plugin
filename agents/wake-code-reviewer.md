@@ -1,5 +1,5 @@
 ---
-name: code-reviewer
+name: wake-code-reviewer
 description: "Code quality specialist. Use when reviewing style, patterns, maintainability, or best practices for Wake Commerce storefront code."
 ---
 

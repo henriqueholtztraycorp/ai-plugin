@@ -1,6 +1,6 @@
 ---
 name: wake-query-review
-description: GraphQL query design review for Wake Commerce storefronts. Schema alignment, fragments, batching, and field-selection hygiene. Delegates detailed redesign to the graphql-architect agent.
+description: GraphQL query design review for Wake Commerce storefronts. Schema alignment, fragments, batching, and field-selection hygiene. Delegates detailed redesign to the wake-graphql-architect agent.
 ---
 
 # Wake Query Review Workflow
@@ -24,7 +24,7 @@ Review GraphQL queries and mutations against the Wake Storefront schema and reco
 5. **Variables & types.** Use typed input objects, not stringly-typed scalars. Confirm pagination variables (`first`, `offset`, `cursor`) match the backing connection.
 6. **Mutations.** Verify the mutation order matches the documented checkout sequence (`createCheckout` → `checkoutCustomerAssociate` → `checkoutAddressAssociate` → `shippingQuotes` → `checkoutSelectShippingQuote` → `checkoutSelectPaymentMethod` → `checkoutComplete`). Flag any missing intermediate step.
 7. **Caching impact.** For each query, list the cache key it produces in Apollo / React Query and the events that should invalidate it (e.g., `checkoutAddCoupon` invalidates the cart query).
-8. **Delegate redesign.** Hand the annotated operations to the **graphql-architect** agent for rewritten versions and fragment extraction.
+8. **Delegate redesign.** Hand the annotated operations to the **wake-graphql-architect** agent for rewritten versions and fragment extraction.
 
 ## Output
 

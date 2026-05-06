@@ -1,6 +1,6 @@
 ---
 name: wake-security-audit
-description: Security audit for Wake Commerce storefront. Review token handling, auth, data exposure, OWASP alignment. Delegates detailed analysis to the security-auditor agent.
+description: Security audit for Wake Commerce storefront. Review token handling, auth, data exposure, OWASP alignment. Delegates detailed analysis to the wake-security-auditor agent.
 ---
 
 # Wake Security Audit Workflow
@@ -25,7 +25,7 @@ Run a security audit over a Wake Commerce storefront integration. Use this comma
 6. **Secrets & config.** Verify API keys live in env vars or a secret manager, never in source. Confirm `.env*` is gitignored and no secrets exist in git history (`git log -p -- .env`).
 7. **Transport & headers.** Check that requests use HTTPS, that `Authorization` is sent in headers (not query strings), and that responses set `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, and `Referrer-Policy` where appropriate.
 8. **Dependencies.** Run `npm audit --omit=dev` (or `pnpm audit`); cross-check Critical/High advisories against actual usage before recommending upgrades.
-9. **Delegate detailed analysis.** Hand the assembled findings to the **security-auditor** agent for OWASP-aligned write-up, CWE references, and remediation snippets.
+9. **Delegate detailed analysis.** Hand the assembled findings to the **wake-security-auditor** agent for OWASP-aligned write-up, CWE references, and remediation snippets.
 
 ## Output
 

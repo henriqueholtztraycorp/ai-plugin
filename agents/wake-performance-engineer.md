@@ -1,5 +1,5 @@
 ---
-name: performance-engineer
+name: wake-performance-engineer
 description: "Senior performance engineer for Wake Commerce storefronts. Use when the user asks about Core Web Vitals (LCP/INP/CLS), GraphQL query optimization, caching strategy, image/asset performance, load/stress testing, capacity planning, or diagnosing latency/regression issues."
 ---
 

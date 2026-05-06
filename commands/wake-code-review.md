@@ -1,6 +1,6 @@
 ---
 name: wake-code-review
-description: Code quality review for Wake Commerce storefront. Style, patterns, maintainability, TypeScript hygiene, and alignment with Wake skills. Delegates detailed review to the code-reviewer agent.
+description: Code quality review for Wake Commerce storefront. Style, patterns, maintainability, TypeScript hygiene, and alignment with Wake skills. Delegates detailed review to the wake-code-reviewer agent.
 ---
 
 # Wake Code Review Workflow
@@ -29,7 +29,7 @@ Review code quality on a Wake Commerce storefront change. Focus is correctness, 
    - `wake-product-variants` — `attributeSelections` resolution
    - Field names stay Portuguese (`produtoId`, `precoPor`, `nome`) when surfacing Wake REST data.
 8. **Tests.** New behavior has a test; modified behavior has a regression test; tests assert outcomes, not implementation. Flag mocked-database tests where an integration test would catch more.
-9. **Delegate.** Hand the assembled notes to the **code-reviewer** agent for the final write-up with rewritten code snippets.
+9. **Delegate.** Hand the assembled notes to the **wake-code-reviewer** agent for the final write-up with rewritten code snippets.
 
 ## Output
 

@@ -1,5 +1,5 @@
 ---
-name: graphql-architect
+name: wake-graphql-architect
 description: "GraphQL design specialist. Use when designing schema usage, queries, fragments, or batching for Wake Commerce Storefront API."
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: wake-test-plan
-description: Generate a test plan for a Wake Commerce storefront feature. Defines E2E scenarios, contract tests, and acceptance criteria. Delegates detailed test design to the qa-expert agent.
+description: Generate a test plan for a Wake Commerce storefront feature. Defines E2E scenarios, contract tests, and acceptance criteria. Delegates detailed test design to the wake-qa-expert agent.
 ---
 
 # Wake Test Plan Workflow
@@ -26,7 +26,7 @@ Produce a structured test plan for a Wake Commerce storefront feature: critical-
 6. **Acceptance criteria.** Given/When/Then per scenario. Each criterion must be independently verifiable in CI.
 7. **Test pyramid placement.** Tag each item: unit (pure logic, schemas), integration (API client + cache), E2E (browser-level critical paths). Aim for many unit, some integration, few E2E.
 8. **Non-functional checks.** Accessibility (WCAG 2.2 AA on the new screens), performance budget (LCP/INP/CLS), and i18n if the feature touches text.
-9. **Delegate detailed design.** Hand the outline to the **qa-expert** agent for full Given/When/Then expansion and fixture authoring.
+9. **Delegate detailed design.** Hand the outline to the **wake-qa-expert** agent for full Given/When/Then expansion and fixture authoring.
 
 ## Output
 

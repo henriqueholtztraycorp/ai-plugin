@@ -31,11 +31,11 @@ For detailed API reference, schemas, and guides:
 | **wake-storefront-developer** | Wake Commerce Storefront API specialist. Use when building headless storefronts, product pages, search, checkout, cart, or customer flows. |
 | **wake-checkout-architect** | Checkout flow design specialist. Use when designing checkout, shipping, payment, or order completion. |
 | **wake-migration-specialist** | Reference-to-headless migration specialist. Use when migrating from Wake Storefront templates, porting Queries/*.graphql, or aligning with production patterns. |
-| **security-auditor** | Senior security auditor for secure code reviews, threat modeling, OWASP compliance. Covers auth, tokens, injection, data exposure. |
-| **qa-expert** | Test design and validation specialist. Use when designing E2E tests, contract tests, or acceptance criteria. |
-| **performance-engineer** | Senior performance engineer for architecting for scale and resolving performance issues. Covers GraphQL, caching, Core Web Vitals, load testing. |
-| **graphql-architect** | GraphQL design specialist. Use when designing schema usage, queries, fragments, or batching. |
-| **code-reviewer** | Code quality specialist. Use when reviewing style, patterns, maintainability, or best practices. |
+| **wake-security-auditor** | Senior security auditor for secure code reviews, threat modeling, OWASP compliance. Covers auth, tokens, injection, data exposure. |
+| **wake-qa-expert** | Test design and validation specialist. Use when designing E2E tests, contract tests, or acceptance criteria. |
+| **wake-performance-engineer** | Senior performance engineer for architecting for scale and resolving performance issues. Covers GraphQL, caching, Core Web Vitals, load testing. |
+| **wake-graphql-architect** | GraphQL design specialist. Use when designing schema usage, queries, fragments, or batching. |
+| **wake-code-reviewer** | Code quality specialist. Use when reviewing style, patterns, maintainability, or best practices. |
 
 ---
 
@@ -47,11 +47,11 @@ For detailed API reference, schemas, and guides:
 | **wake-search-page** | Build a search page. Call search(query, partnerAccessToken), use productsByOffset for pagination, apply filters and aggregations. |
 | **wake-checkout-flow** | Implement full checkout sequence: createCheckout → checkoutCustomerAssociate → checkoutAddressAssociate → shippingQuotes → checkoutSelectShippingQuote → checkoutAddCoupon → paymentMethods → checkoutSelectPaymentMethod → checkoutComplete. |
 | **wake-migrate-storefront-query** | Port Wake Storefront reference Queries/*.graphql to headless. Extract root field, args, fragment; generate equivalent headless query. |
-| **wake-security-audit** | Security audit. Review token handling, auth, data exposure, OWASP alignment. Uses security-auditor agent. |
-| **wake-test-plan** | Generate test plan. Define E2E scenarios, contract tests, acceptance criteria. Uses qa-expert agent. |
-| **wake-performance-review** | Performance review. Query optimization, caching, Core Web Vitals. Uses performance-engineer agent and web-performance-audit skill. |
-| **wake-query-review** | GraphQL query design review. Schema alignment, fragments, batching. Uses graphql-architect agent. |
-| **wake-code-review** | Code quality review. Style, patterns, maintainability. Uses code-reviewer agent. |
+| **wake-security-audit** | Security audit. Review token handling, auth, data exposure, OWASP alignment. Uses wake-security-auditor agent. |
+| **wake-test-plan** | Generate test plan. Define E2E scenarios, contract tests, acceptance criteria. Uses wake-qa-expert agent. |
+| **wake-performance-review** | Performance review. Query optimization, caching, Core Web Vitals. Uses wake-performance-engineer agent and web-performance-audit skill. |
+| **wake-query-review** | GraphQL query design review. Schema alignment, fragments, batching. Uses wake-graphql-architect agent. |
+| **wake-code-review** | Code quality review. Style, patterns, maintainability. Uses wake-code-reviewer agent. |
 
 ---
 
@@ -74,8 +74,8 @@ Only `chrome-devtools` is bundled in `.mcp.json` (required by the `web-performan
 
 | Server | Suggested for | Install |
 |--------|---------------|---------|
-| `context7` | `performance-engineer`, `security-auditor` (research, OWASP/CWE lookup) | `npx -y @upstash/context7-mcp` — requires `CONTEXT7_API_KEY` |
-| `sequential-thinking` | `performance-engineer`, `security-auditor` (structured reasoning) | `npx -y @modelcontextprotocol/server-sequential-thinking` |
+| `context7` | `wake-performance-engineer`, `wake-security-auditor` (research, OWASP/CWE lookup) | `npx -y @upstash/context7-mcp` — requires `CONTEXT7_API_KEY` |
+| `sequential-thinking` | `wake-performance-engineer`, `wake-security-auditor` (structured reasoning) | `npx -y @modelcontextprotocol/server-sequential-thinking` |
 | `github` | repo / issue / PR lookups | `npx -y @modelcontextprotocol/server-github` — requires `GITHUB_PERSONAL_ACCESS_TOKEN` |
 | `@playwright/mcp` | E2E browser automation, QA flows | `npx -y @playwright/mcp` *(use the official scoped package — not the unscoped `playwright-mcp`)* |
 | `shadcn` | UI component generation | `npx shadcn@latest mcp` |
@@ -90,6 +90,8 @@ Only `chrome-devtools` is bundled in `.mcp.json` (required by the `web-performan
 | **wake-graphql-validate.sh** | `./scripts/wake-graphql-validate.sh <query-file>` | Validate GraphQL query: productId (not handle), attributeSelections, partnerAccessToken. |
 | **wake-query-from-reference.sh** | `./scripts/wake-query-from-reference.sh <reference-file>` | Extract headless query pattern from Wake Storefront reference. Outputs mapping notes. |
 | **wake-checkout-flow-validator.sh** | `./scripts/wake-checkout-flow-validator.sh <file>` | Verify checkout mutations are called in correct order. |
+
+> **Requires a POSIX shell** (bash + `grep`, `awk`, `tr`, `printf`). On Windows, run them under **Git Bash**, **WSL**, or **MSYS2** — they will not run in PowerShell or `cmd.exe`. PowerShell ports are not currently provided.
 
 ---
 

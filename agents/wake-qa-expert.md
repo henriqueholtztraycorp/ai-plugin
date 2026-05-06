@@ -1,5 +1,5 @@
 ---
-name: qa-expert
+name: wake-qa-expert
 description: "Test design and validation specialist. Use when designing E2E tests, contract tests, or acceptance criteria for Wake Commerce storefronts."
 ---
 
