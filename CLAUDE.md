@@ -2,11 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Official docs to create plugins: https://code.claude.com/docs/en/plugins
+
 ## Repository shape
 
 This repo is **two products in one tree**, sharing only the README:
 
-1. **A Claude/Cursor plugin** — declarative content in `agents/`, `commands/`, `skills/`, `rules/`, `.claude-plugin/`, `.cursor-plugin/`, `assets/`. No build step. Consumed by Claude Code (`/plugin install wake-storefront-api`) and Cursor (local plugin dir). The Claude manifest names the plugin `wake-storefront`; the Cursor manifest names it `wake-storefront-api`.
+1. **A Claude/Cursor plugin** — declarative content in `agents/`, `commands/`, `skills/`, `rules/`, `.claude-plugin/`, `.cursor-plugin/`, `assets/`. No build step. Consumed by Claude Code (`/plugin install wake-storefront-api`) and Cursor (local plugin dir). Both Claude and Cursor manifests use the name `wake-storefront-api`. The Claude marketplace manifest is at `.claude-plugin/marketplace.json` (marketplace `name: wake-commerce`).
 2. **A TypeScript CLI + MCP server** — `src/` and `api/`, published to npm as `wake-commerce-mcp`. Two binaries (`wake-commerce`/`wc` and `wake-commerce-mcp`) plus a Vercel HTTP MCP handler.
 
 When editing, know which product you're touching. The plugin half is markdown-only; the CLI/MCP half is built TypeScript.
@@ -39,6 +41,7 @@ The MCP stdio server is invoked via the `wake-commerce-mcp` bin (after build) or
 ### Auth header dispatch (src/lib/api.ts)
 
 The client picks the auth scheme by token shape and env vars in this order:
+
 1. If `WAKE_AUTH_HEADER` is set, write the token to that custom header verbatim.
 2. Else if `WAKE_AUTH_TYPE=basic` **or** the token starts with `pocma-` and contains no `.`, send `Authorization: Basic <token>`.
 3. Otherwise send both `Authorization: Bearer <token>` and `TCS-Access-Token: <token>` (the Wake API expects either).
@@ -62,6 +65,7 @@ These constraints are repeated at the top of skills, agents, and commands and ar
 ## MCP tool conventions
 
 Tools in `src/lib/tools.ts` follow Wake's REST shape:
+
 - The Wake REST API (`api.fbits.net`) returns either a bare array or `{ items: [...] }`. Every tool normalizes with `Array.isArray(data) ? data : data?.items ?? []`. Reuse this pattern for new tools.
 - Field names are Portuguese (`produtoId`, `precoPor`, `nome`, `usuarioId`, `dataCadastro`, `categorias`, `cliente`). Don't rename to English in responses.
 - `list_customers` falls back to deriving customers from `/pedidos` if `/usuarios` is unavailable — some Wake tenants don't expose the users endpoint.

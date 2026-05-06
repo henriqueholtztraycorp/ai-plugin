@@ -6,8 +6,8 @@ Pre-submission review against Claude Code plugin marketplace requirements (https
 
 ## Critical
 
-- **[CRITICAL] Plugin identity mismatch.** `.claude-plugin/plugin.json` declares `name: "wake-storefront"`, but `README.md` instructs users to run `/plugin install wake-storefront-api` (the Cursor manifest's name). Marketplace install will fail on the documented command.
-- **[CRITICAL] No `marketplace.json`.** Submitting to the official marketplace requires a `.claude-plugin/marketplace.json` describing the plugin entry. None present.
+- **[CRITICAL] ~~Plugin identity mismatch.~~** ~~`.claude-plugin/plugin.json` declares `name: "wake-storefront"`, but `README.md` instructs users to run `/plugin install wake-storefront-api` (the Cursor manifest's name). Marketplace install will fail on the documented command.~~ **[FIXED]** Renamed `.claude-plugin/plugin.json` to `wake-storefront-api` to match Cursor manifest and README. CLAUDE.md updated.
+- **[CRITICAL] ~~No `marketplace.json`.~~** ~~Submitting to the official marketplace requires a `.claude-plugin/marketplace.json` describing the plugin entry. None present.~~ **[FIXED]** Created `.claude-plugin/marketplace.json` with marketplace name `wake-commerce` and a single plugin entry (`wake-storefront-api`, `source: "./"`).
 - **[CRITICAL] Missing direct dependency `zod`.** `src/lib/tools.ts:2` does `import { z } from 'zod'`, but `zod` is not in `package.json` `dependencies`. Currently only resolves via transitive `@modelcontextprotocol/sdk`; a peer/dep change in upstream breaks the MCP server at runtime. Add `zod` explicitly.
 - **[CRITICAL] API key transported via URL query string** (`api/mcp.ts:9`). `?apiKey=…` is logged by Vercel access logs, upstream proxies, browser history, and `Referer` headers. Move credentials to headers only; reject query-string auth or accept it only with an explicit warning.
 - **[CRITICAL] No LICENSE file.** Both manifests and `package.json` declare `MIT`, but no `LICENSE` file is checked in. Required by marketplace policy and by the MIT license itself.
