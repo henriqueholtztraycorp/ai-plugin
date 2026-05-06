@@ -13,7 +13,7 @@ AI-powered development assistance for Wake Commerce Storefront. Agents, skills, 
 ### Claude (Agent Plugins)
 
 1. Add the marketplace if needed: `/plugin marketplace add <marketplace-url>`
-2. Install: `/plugin install wake-storefront-api`
+2. Install: `/plugin install wake-storefront`
 3. Or test locally with a local marketplace: `/plugin marketplace add ./` from the plugin root
 
 ## Documentation

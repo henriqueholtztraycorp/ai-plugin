@@ -8,8 +8,8 @@ Official docs to create plugins: https://code.claude.com/docs/en/plugins
 
 This repo is a **Claude/Cursor plugin** — declarative, markdown-only content in `agents/`, `commands/`, `skills/`, `.claude-plugin/`, `.cursor-plugin/`, `assets/`. No build step, no compiled artifacts. Internal-only tooling (publish-copy command/rule) lives in `tooling/` and is never copied to the marketplace.
 
-- Consumed by Claude Code (`/plugin install wake-storefront-api`) and by Cursor (added as a local plugin directory).
-- Both Claude and Cursor manifests use the plugin name `wake-storefront-api`.
+- Consumed by Claude Code (`/plugin install wake-storefront`) and by Cursor (added as a local plugin directory).
+- Both Claude and Cursor manifests use the plugin name `wake-storefront`.
 - The Claude marketplace manifest is at `.claude-plugin/marketplace.json` (marketplace `name: wake-commerce`).
 
 ## Plugin content rules (non-obvious)

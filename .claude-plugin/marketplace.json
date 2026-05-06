@@ -6,7 +6,7 @@
   "description": "Wake Commerce plugin marketplace. Agents, skills, and commands for building headless storefronts on the Wake Commerce Storefront API.",
   "plugins": [
     {
-      "name": "wake-storefront-api",
+      "name": "wake-storefront",
       "source": "./",
       "description": "Wake Commerce development assistance for headless storefronts. Teaches product queries, checkout flow, cart, customer API, and GraphQL patterns.",
       "version": "1.0.0",
