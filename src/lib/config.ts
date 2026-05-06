@@ -28,7 +28,19 @@ export async function saveConfig(partial: Partial<WcConfig>): Promise<void> {
   const merged: WcConfig = { ...existing, ...partial };
   await mkdir(CONFIG_DIR, { recursive: true });
   await writeFile(CONFIG_FILE, JSON.stringify(merged, null, 2), 'utf-8');
-  await chmod(CONFIG_FILE, 0o600);
+  // chmod 0o600 is honored on POSIX. On Windows NTFS, POSIX modes are largely
+  // ignored — the file is readable by any process running as the same user.
+  // For higher-security setups on Windows, prefer the env-var path
+  // (WAKE_API_KEY / WAKE_STORE_ID) sourced from a secret manager rather than
+  // persisting the token to ~/.wc/config.json. This caveat is documented in
+  // the README under "Credential storage".
+  if (process.platform !== 'win32') {
+    try {
+      await chmod(CONFIG_FILE, 0o600);
+    } catch {
+      /* best-effort; some filesystems reject chmod */
+    }
+  }
 }
 
 /**

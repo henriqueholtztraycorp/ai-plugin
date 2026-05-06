@@ -14,7 +14,7 @@ AI-powered development assistance for Wake Commerce Storefront. Agents, skills, 
 
 1. Add the marketplace if needed: `/plugin marketplace add <marketplace-url>`
 2. Install: `/plugin install wake-storefront-api`
-3. Or test locally: `claude --plugin-dir ./path/to/plugin`
+3. Or test locally with a local marketplace: `/plugin marketplace add ./` from the plugin root
 
 ## Documentation
 
@@ -31,9 +31,9 @@ For detailed API reference, schemas, and guides:
 | **wake-storefront-developer** | Wake Commerce Storefront API specialist. Use when building headless storefronts, product pages, search, checkout, cart, or customer flows. |
 | **wake-checkout-architect** | Checkout flow design specialist. Use when designing checkout, shipping, payment, or order completion. |
 | **wake-migration-specialist** | Reference-to-headless migration specialist. Use when migrating from Wake Storefront templates, porting Queries/*.graphql, or aligning with production patterns. |
-| **security-auditor** | Senior security auditor. Use proactively for secure code reviews, threat modeling, OWASP compliance. Covers auth, tokens, injection, data exposure. |
+| **security-auditor** | Senior security auditor for secure code reviews, threat modeling, OWASP compliance. Covers auth, tokens, injection, data exposure. |
 | **qa-expert** | Test design and validation specialist. Use when designing E2E tests, contract tests, or acceptance criteria. |
-| **performance-engineer** | Senior performance engineer. Use proactively for architecting for scale, resolving performance issues. Covers GraphQL, caching, Core Web Vitals, load testing. |
+| **performance-engineer** | Senior performance engineer for architecting for scale and resolving performance issues. Covers GraphQL, caching, Core Web Vitals, load testing. |
 | **graphql-architect** | GraphQL design specialist. Use when designing schema usage, queries, fragments, or batching. |
 | **code-reviewer** | Code quality specialist. Use when reviewing style, patterns, maintainability, or best practices. |
 
@@ -95,10 +95,9 @@ Available tools: `list_products`, `list_orders`, `get_order`, `list_customers`, 
 
 ### Credential storage
 
-The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 600 on POSIX). On Windows NTFS, POSIX file modes are largely ignored — anything running as the same user can read the file. If that is a concern:
+The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 600 on POSIX). On Windows NTFS, POSIX file modes are largely ignored — anything running as the same user can read the file. If that is a concern, prefer environment variables sourced from a secret manager (Windows Credential Manager, 1Password CLI, Vault, etc.) instead of persisting the token to disk.
 
-- Prefer environment variables (`$env:WAKE_API_KEY`, `$env:WAKE_STORE_ID`) sourced from a secret manager (Windows Credential Manager, 1Password CLI, Vault, etc.).
-- Set `WAKE_LEGACY_AUTH=1` only if your tenant requires the legacy `TCS-Access-Token` header in addition to `Authorization: Bearer`. Off by default to limit token surface in logs and proxies.
+Set `WAKE_LEGACY_AUTH=1` only if your tenant requires the legacy `TCS-Access-Token` header in addition to `Authorization: Bearer`. Off by default to limit token surface in logs and proxies.
 
 ---
 
@@ -119,7 +118,6 @@ The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 
 | Cursor manifest | `.cursor-plugin/` | Cursor plugin metadata |
 | Claude manifest | `.claude-plugin/` | Claude/Agent Plugins metadata |
 | MCP config | `.mcp.json` | MCP servers config |
-| MCP server | `api/mcp.ts` | HTTP MCP server (Vercel) |
 | Skills | `skills/` | Domain instructions and references |
 | Agents | `agents/` | Persona definitions |
 | Commands | `commands/` | Slash-command workflows |

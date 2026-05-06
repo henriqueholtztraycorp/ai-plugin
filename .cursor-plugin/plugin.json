@@ -6,5 +6,6 @@
     "name": "Wake Commerce"
   },
   "keywords": ["wake", "commerce", "storefront", "graphql", "headless", "ecommerce"],
+  "license": "MIT",
   "logo": "assets/logo.svg"
 }

@@ -23,7 +23,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const server = new McpServer({ name: 'wake-commerce', version: '0.1.0' });
+  const server = new McpServer({ name: 'wake-commerce', version: '1.0.0' });
   registerTools(server, () => createApiClient(undefined, { token: apiKey, store: storeId }));
 
   const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });

@@ -3,6 +3,12 @@ import { z } from 'zod';
 
 type ApiClient = { fetch(path: string, init?: RequestInit): Promise<Response> };
 
+const idSchema = z
+  .string()
+  .min(1)
+  .max(64)
+  .regex(/^[A-Za-z0-9_-]+$/, 'ID must contain only letters, numbers, underscores, or hyphens');
+
 export function registerTools(server: McpServer, getClient: () => Promise<ApiClient>) {
   // ── Products ────────────────────────────────────────────────────────────────
 
@@ -87,11 +93,11 @@ export function registerTools(server: McpServer, getClient: () => Promise<ApiCli
     'get_order',
     'Get Wake Commerce order details by ID',
     {
-      id: z.string().describe('Order ID'),
+      id: idSchema.describe('Order ID'),
     },
     async ({ id }) => {
       const client = await getClient();
-      const res = await client.fetch(`/pedidos/${id}`);
+      const res = await client.fetch(`/pedidos/${encodeURIComponent(id)}`);
       if (!res.ok) throw new Error(`API error: ${res.status} ${res.statusText}`);
       const order = await res.json();
       return { content: [{ type: 'text' as const, text: JSON.stringify(order, null, 2) }] };
@@ -160,11 +166,11 @@ export function registerTools(server: McpServer, getClient: () => Promise<ApiCli
     'get_customer',
     'Get Wake Commerce customer details by ID',
     {
-      id: z.string().describe('Customer ID'),
+      id: idSchema.describe('Customer ID'),
     },
     async ({ id }) => {
       const client = await getClient();
-      const res = await client.fetch(`/usuarios/${id}`);
+      const res = await client.fetch(`/usuarios/${encodeURIComponent(id)}`);
       if (!res.ok) throw new Error(`API error: ${res.status} ${res.statusText}`);
       const customer = await res.json();
       return { content: [{ type: 'text' as const, text: JSON.stringify(customer, null, 2) }] };
