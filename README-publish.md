@@ -68,6 +68,21 @@ For detailed API reference, schemas, and guides:
 
 ---
 
+## Optional MCP Servers
+
+Only `chrome-devtools` is bundled in `.mcp.json` (required by the `web-performance-audit` skill). The servers below are **suggestions** — agents and skills can take advantage of them when present, but this plugin does **not** auto-install them. Add any you want to your own MCP config.
+
+| Server | Suggested for | Install |
+|--------|---------------|---------|
+| `context7` | `performance-engineer`, `security-auditor` (research, OWASP/CWE lookup) | `npx -y @upstash/context7-mcp` — requires `CONTEXT7_API_KEY` |
+| `sequential-thinking` | `performance-engineer`, `security-auditor` (structured reasoning) | `npx -y @modelcontextprotocol/server-sequential-thinking` |
+| `github` | repo / issue / PR lookups | `npx -y @modelcontextprotocol/server-github` — requires `GITHUB_PERSONAL_ACCESS_TOKEN` |
+| `@playwright/mcp` | E2E browser automation, QA flows | `npx -y @playwright/mcp` *(use the official scoped package — not the unscoped `playwright-mcp`)* |
+| `shadcn` | UI component generation | `npx shadcn@latest mcp` |
+| `TestSprite` | Test scaffolding | `npx -y testsprite-mcp` |
+
+---
+
 ## Tools (Scripts)
 
 | Script | Usage | Purpose |
@@ -84,11 +99,10 @@ For detailed API reference, schemas, and guides:
 |-----------|------|---------|
 | Cursor manifest | `.cursor-plugin/` | Cursor plugin metadata |
 | Claude manifest | `.claude-plugin/` | Claude/Agent Plugins metadata |
-| MCP config | `.mcp.json` | External MCP servers used by skills/agents |
+| MCP config | `.mcp.json` | Bundled MCP servers (chrome-devtools only — see [Optional MCP Servers](#optional-mcp-servers) for suggestions) |
 | Skills | `skills/` | Domain instructions and references |
 | Agents | `agents/` | Persona definitions |
 | Commands | `commands/` | Slash-command workflows |
-| Rules | `rules/` | Plugin rules |
 | Scripts | `scripts/` | Validation and extraction tools |
 | Assets | `assets/` | Logo and marketplace assets |
 

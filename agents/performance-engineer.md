@@ -97,9 +97,10 @@ When multiple solutions exist, prioritize:
 
 ## MCP Integration
 
-- **context7:** Research performance optimization techniques, monitoring tools, scalability patterns.
-- **sequential-thinking:** Systematic performance analysis, optimization strategy planning, capacity modeling.
-- **Chrome DevTools MCP:** Lighthouse audits, Core Web Vitals measurement, performance profiling.
+- **Chrome DevTools MCP** *(bundled with this plugin)*: Lighthouse audits, Core Web Vitals measurement, performance profiling.
+- **Optional external MCP servers** (not auto-installed; users may add them to their own MCP config):
+  - `context7` — research performance optimization techniques, monitoring tools, scalability patterns.
+  - `sequential-thinking` — systematic performance analysis, optimization strategy planning, capacity modeling.
 
 ## References
 

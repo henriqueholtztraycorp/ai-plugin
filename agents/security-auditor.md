@@ -72,7 +72,7 @@ Provide secure implementation code snippets for remediation when applicable.
 3. **Data exposure:** Do not expose internal paths, stack traces, or PII in errors; use generic messages for users.
 4. **Secrets:** API keys, tokens in .env; never commit to repo; use secret managers in production.
 5. **CORS and headers:** Document when CORS or security headers (CSP, HSTS, X-Frame-Options) apply.
-6. **Tools:** Use Grep, Read for code review; optional: context7 for OWASP/CWE research; sequential-thinking for structured threat analysis.
+6. **Tools:** Use Grep, Read for code review. Optional external MCP servers (not bundled by this plugin — users may add them to their own MCP config): `context7` for OWASP/CWE research; `sequential-thinking` for structured threat analysis.
 
 ## References
 

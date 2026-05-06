@@ -15,11 +15,10 @@ Copy these paths from toolkit repo root to publish destination. Overwrite existi
 |------|-------------|
 | `.cursor-plugin/` | Cursor manifest and plugin metadata |
 | `.claude-plugin/` | Claude/Agent Plugins manifest |
-| `.mcp.json` | MCP server definitions (Chrome DevTools) |
+| `.mcp.json` | MCP server definitions (Chrome DevTools only) |
 | `skills/` | Skills (wake-storefront-api, wake-checkout-flow, wake-product-variants, wake-storefront-reference-patterns, wake-hotsite-banners, web-performance-audit, and spec-derived only) |
 | `agents/` | Agents (wake-storefront-developer, wake-checkout-architect, wake-migration-specialist, security-auditor, qa-expert, performance-engineer, graphql-architect, code-reviewer, and spec-derived only) |
-| `rules/` | Rules (publish-copy.mdc and spec-derived only) |
-| `commands/` | Commands (publish-copy, wake-product-page, wake-search-page, wake-checkout-flow, wake-migrate-storefront-query, wake-security-audit, wake-test-plan, wake-performance-review, wake-query-review, wake-code-review, and spec-derived only) |
+| `commands/` | Commands (wake-product-page, wake-search-page, wake-checkout-flow, wake-migrate-storefront-query, wake-security-audit, wake-test-plan, wake-performance-review, wake-query-review, wake-code-review, and spec-derived only) |
 | `README-publish.md` | Plugin README (copied as `README.md`; toolkit-only content excluded) |
 | `assets/` | Logo and other marketplace assets |
 | `scripts/` | Plugin utility scripts (wake-graphql-validate, wake-query-from-reference, wake-checkout-flow-validator) |
@@ -28,6 +27,8 @@ Copy these paths from toolkit repo root to publish destination. Overwrite existi
 
 Do NOT copy any of the following:
 
+- `tooling/` — Internal maintainer tooling (this rule and the publish-copy command live here)
+- `rules/` — Toolkit-only rules directory (no marketplace-facing rules at this time)
 - `.bmad-core/` — Internal BMad tooling
 - `.codex/` — Internal Codex tooling
 - `.specify/` — Speckit workflow and memory
