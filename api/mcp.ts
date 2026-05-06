@@ -5,16 +5,21 @@ import { createApiClient } from '../src/lib/api.js';
 import { registerTools } from '../src/lib/tools.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Accept credentials from query params (Smithery) or headers (direct clients)
-  const apiKey = (req.query['apiKey'] as string)
-    || (req.headers['x-wake-api-key'] as string)
-    || undefined;
-  const storeId = (req.query['storeId'] as string)
-    || (req.headers['x-wake-store-id'] as string)
-    || undefined;
+  // Credentials must be supplied via headers. Query-string auth is rejected because
+  // Vercel access logs, upstream proxies, browser history, and Referer headers
+  // routinely capture URLs and would leak the token.
+  if (req.query['apiKey'] || req.query['storeId']) {
+    res.status(400).json({
+      error: 'Credentials in query string are not accepted. Use x-wake-api-key and x-wake-store-id headers.',
+    });
+    return;
+  }
+
+  const apiKey = (req.headers['x-wake-api-key'] as string) || undefined;
+  const storeId = (req.headers['x-wake-store-id'] as string) || undefined;
 
   if (!apiKey || !storeId) {
-    res.status(400).json({ error: 'Missing apiKey and storeId. Pass as query params or x-wake-api-key / x-wake-store-id headers.' });
+    res.status(400).json({ error: 'Missing credentials. Pass x-wake-api-key and x-wake-store-id headers.' });
     return;
   }
 

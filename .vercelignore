@@ -1,0 +1,26 @@
+# Plugin-only content (markdown, agents, skills, commands) — not used by the MCP function
+agents/
+commands/
+rules/
+skills/
+assets/
+.claude-plugin/
+.cursor-plugin/
+.mcp.json
+smithery.yaml
+
+# Internal review and planning artifacts
+REVIEW_*.md
+review-prompt.md
+Final-Review.md
+README-publish.md
+CLAUDE.md
+
+# Exploratory scripts (not shipped)
+scripts/
+
+# Local tooling
+.git/
+.gitignore
+.vercelignore
+eslint.config.js
