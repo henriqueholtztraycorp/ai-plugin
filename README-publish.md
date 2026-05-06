@@ -31,9 +31,9 @@ For detailed API reference, schemas, and guides:
 | **wake-storefront-developer** | Wake Commerce Storefront API specialist. Use when building headless storefronts, product pages, search, checkout, cart, or customer flows. |
 | **wake-checkout-architect** | Checkout flow design specialist. Use when designing checkout, shipping, payment, or order completion. |
 | **wake-migration-specialist** | Reference-to-headless migration specialist. Use when migrating from Wake Storefront templates, porting Queries/*.graphql, or aligning with production patterns. |
-| **wake-security-auditor** | Senior security auditor. Use when reviewing changes that touch auth/tokens/secrets/input validation, performing OWASP-aligned audits, or threat-modeling storefront flows. |
+| **wake-security-auditor** | Senior security auditor for secure code reviews, threat modeling, OWASP compliance. Covers auth, tokens, injection, data exposure. |
 | **wake-qa-expert** | Test design and validation specialist. Use when designing E2E tests, contract tests, or acceptance criteria. |
-| **wake-performance-engineer** | Senior performance engineer. Use when investigating Core Web Vitals, GraphQL query optimization, caching strategy, image/asset perf, load/stress testing, or scaling/capacity questions. |
+| **wake-performance-engineer** | Senior performance engineer for architecting for scale and resolving performance issues. Covers GraphQL, caching, Core Web Vitals, load testing. |
 | **wake-graphql-architect** | GraphQL design specialist. Use when designing schema usage, queries, fragments, or batching. |
 | **wake-code-reviewer** | Code quality specialist. Use when reviewing style, patterns, maintainability, or best practices. |
 

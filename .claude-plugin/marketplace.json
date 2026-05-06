@@ -1,0 +1,23 @@
+{
+  "name": "wake-commerce",
+  "owner": {
+    "name": "Wake Commerce"
+  },
+  "description": "Wake Commerce plugin marketplace. Agents, skills, and commands for building headless storefronts on the Wake Commerce Storefront API.",
+  "plugins": [
+    {
+      "name": "wake-storefront",
+      "source": "./",
+      "description": "Wake Commerce development assistance for headless storefronts. Teaches product queries, checkout flow, cart, customer API, and GraphQL patterns.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Wake Commerce"
+      },
+      "license": "MIT",
+      "keywords": ["wake", "commerce", "storefront", "graphql", "headless", "ecommerce"],
+      "homepage": "https://github.com/wake-engineering/ai-plugin",
+      "repository": "https://github.com/wake-engineering/ai-plugin",
+      "bugs": "https://github.com/wake-engineering/ai-plugin/issues"
+    }
+  ]
+}
