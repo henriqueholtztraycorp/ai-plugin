@@ -127,16 +127,29 @@ export function registerTools(server: McpServer, getClient: () => Promise<ApiCli
     async ({ limit, sortBy, order }) => {
       const client = await getClient();
       let items: Record<string, unknown>[] = [];
+      let usuariosStatus: number | undefined;
 
       try {
         const res = await client.fetch('/usuarios');
+        usuariosStatus = res.status;
         if (res.ok) {
           const data = (await res.json()) as unknown;
           items = Array.isArray(data) ? data : (data as { items?: unknown[] })?.items ?? [];
         }
-      } catch { /* fall through to orders fallback */ }
+      } catch { /* fall through to /pedidos fallback decision below */ }
 
+      // Some Wake tenants intentionally lock down /usuarios. Deriving customers
+      // from /pedidos extracts PII (name, email) from orders, which can defeat
+      // that lockdown. Gate the fallback behind WAKE_CUSTOMERS_FALLBACK=1 so
+      // tenants opt in explicitly. Default is to surface the underlying error.
+      const fallbackEnabled = process.env['WAKE_CUSTOMERS_FALLBACK'] === '1';
       if (items.length === 0) {
+        if (!fallbackEnabled) {
+          throw new Error(
+            `/usuarios returned no customers${usuariosStatus ? ` (HTTP ${usuariosStatus})` : ''}. ` +
+            'Set WAKE_CUSTOMERS_FALLBACK=1 to derive customers from /pedidos (extracts PII from orders).'
+          );
+        }
         const ordersRes = await client.fetch('/pedidos');
         if (!ordersRes.ok) throw new Error(`API error: ${ordersRes.status} ${ordersRes.statusText}`);
         const ordersData = (await ordersRes.json()) as unknown;

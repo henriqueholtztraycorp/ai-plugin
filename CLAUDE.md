@@ -68,7 +68,7 @@ Tools in `src/lib/tools.ts` follow Wake's REST shape:
 
 - The Wake REST API (`api.fbits.net`) returns either a bare array or `{ items: [...] }`. Every tool normalizes with `Array.isArray(data) ? data : data?.items ?? []`. Reuse this pattern for new tools.
 - Field names are Portuguese (`produtoId`, `precoPor`, `nome`, `usuarioId`, `dataCadastro`, `categorias`, `cliente`). Don't rename to English in responses.
-- `list_customers` falls back to deriving customers from `/pedidos` if `/usuarios` is unavailable — some Wake tenants don't expose the users endpoint.
+- `list_customers` can fall back to deriving customers from `/pedidos` when `/usuarios` is unavailable — some Wake tenants don't expose the users endpoint. The fallback is **off by default** (it extracts PII from orders) and must be opted into with `WAKE_CUSTOMERS_FALLBACK=1`. Without the flag, the tool throws a descriptive error pointing at the env var.
 
 ## Environment
 

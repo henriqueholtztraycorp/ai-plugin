@@ -1,6 +1,6 @@
 ---
 name: performance-engineer
-description: "Senior performance engineer for Wake Commerce storefronts. Use PROACTIVELY for architecting for scale, resolving complex performance issues, and establishing a performance culture. Covers GraphQL, caching, Core Web Vitals, load testing, and monitoring."
+description: "Senior performance engineer for Wake Commerce storefronts. Use when the user asks about Core Web Vitals (LCP/INP/CLS), GraphQL query optimization, caching strategy, image/asset performance, load/stress testing, capacity planning, or diagnosing latency/regression issues."
 ---
 
 # Performance Engineer

@@ -31,9 +31,9 @@ For detailed API reference, schemas, and guides:
 | **wake-storefront-developer** | Wake Commerce Storefront API specialist. Use when building headless storefronts, product pages, search, checkout, cart, or customer flows. |
 | **wake-checkout-architect** | Checkout flow design specialist. Use when designing checkout, shipping, payment, or order completion. |
 | **wake-migration-specialist** | Reference-to-headless migration specialist. Use when migrating from Wake Storefront templates, porting Queries/*.graphql, or aligning with production patterns. |
-| **security-auditor** | Senior security auditor. Use proactively for secure code reviews, threat modeling, OWASP compliance. Covers auth, tokens, injection, data exposure. |
+| **security-auditor** | Senior security auditor. Use when reviewing changes that touch auth/tokens/secrets/input validation, performing OWASP-aligned audits, or threat-modeling storefront flows. |
 | **qa-expert** | Test design and validation specialist. Use when designing E2E tests, contract tests, or acceptance criteria. |
-| **performance-engineer** | Senior performance engineer. Use proactively for architecting for scale, resolving performance issues. Covers GraphQL, caching, Core Web Vitals, load testing. |
+| **performance-engineer** | Senior performance engineer. Use when investigating Core Web Vitals, GraphQL query optimization, caching strategy, image/asset perf, load/stress testing, or scaling/capacity questions. |
 | **graphql-architect** | GraphQL design specialist. Use when designing schema usage, queries, fragments, or batching. |
 | **code-reviewer** | Code quality specialist. Use when reviewing style, patterns, maintainability, or best practices. |
 
@@ -93,6 +93,14 @@ Connect Claude Desktop or Claude Code directly to your Wake Commerce store via t
 
 Available tools: `list_products`, `list_orders`, `get_order`, `list_customers`, `get_customer`.
 
+### Local development
+
+The `dev` script (`tsx src/index.ts`) and the rest of the source live under `src/` — they are intended for contributors working in this repository only. The published npm package ships only the compiled `dist/` output (`files: ["dist"]` in `package.json`), so:
+
+- Consumers should invoke the CLI via the installed binaries (`wake-commerce`, `wc`, `wake-commerce-mcp`) or `node node_modules/wake-commerce-mcp/dist/index.js` — not `npm run dev`.
+- `tsx` is a `devDependency` and is intentionally not pulled in on production installs; running `npm run dev` from an installed (non-source) tree will fail because both `tsx` and `src/` are absent.
+- To run from source, clone this repo and run `npm install` followed by `npm run dev`.
+
 ### Credential storage
 
 The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 600 on POSIX). On Windows NTFS, POSIX file modes are largely ignored — anything running as the same user can read the file. If that is a concern:
@@ -100,6 +108,7 @@ The CLI persists `WAKE_API_KEY` / `WAKE_STORE_ID` to `~/.wc/config.json` (chmod 
 - Prefer environment variables (`$env:WAKE_API_KEY`, `$env:WAKE_STORE_ID`) sourced from a secret manager (Windows Credential Manager, 1Password CLI, Vault, etc.).
 - Set `WAKE_LEGACY_AUTH=1` only if your tenant requires the legacy `TCS-Access-Token` header in addition to `Authorization: Bearer`. Off by default to limit token surface in logs and proxies.
 - Override `WAKE_API_BASE_URL` if your tenant is on a non-default Wake REST host (defaults to `https://api.fbits.net`).
+- `WAKE_CUSTOMERS_FALLBACK=1` opts the `list_customers` tool into deriving customers from `/pedidos` when `/usuarios` is unavailable. Off by default — the fallback extracts customer PII (name, email) from orders, which would defeat the lockdown of a tenant that intentionally restricts `/usuarios`.
 
 ---
 
